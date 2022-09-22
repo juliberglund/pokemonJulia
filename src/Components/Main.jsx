@@ -50,6 +50,13 @@ const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData }) => {
                         }}>Next</button>}
 
                     </div>
+                    {/* --------------------------Knapp för att stänga popupen----------------- */}
+                    <div className="btn-esc">
+
+                    
+
+                    </div>
+
                 </div>
                 <div className="right-content">
                     <Pokeinfo data={pokeDex} />
