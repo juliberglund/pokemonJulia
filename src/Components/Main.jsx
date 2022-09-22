@@ -1,59 +1,58 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "./Card";
 import Pokeinfo from "./Pokeinfo";
-import axios from "axios";
 import { useState } from "react";
-import { useEffect } from "react";
-const Main=()=>{
-    const [pokeData,setPokeData]=useState([]);
-    const [loading,setLoading]=useState(true);
-    const [url,setUrl]=useState("https://pokeapi.co/api/v2/pokemon/")
-    const [nextUrl,setNextUrl]=useState();
-    const [prevUrl,setPrevUrl]=useState();
-    const [pokeDex,setPokeDex]=useState();
+const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData }) => {
 
-    const pokeFun=async()=>{
-        setLoading(true)
-        const res=await axios.get(url);
-        setNextUrl(res.data.next);
-        setPrevUrl(res.data.previous);
-        getPokemon(res.data.results)
-        setLoading(false)
+    const [filteredData, setFilteredData] = useState([]);
+    const [search, setSearch] = useState('')
+    const [pokeDex, setPokeDex] = useState();
+
+    const handleSearch = (e) => {
+        setSearch(e.target.value);
     }
-    const getPokemon=async(res)=>{
-       res.map(async(item)=>{
-          const result=await axios.get(item.url)
-          setPokeData(state=>{
-              state=[...state,result.data]
-              state.sort((a,b)=>a.id>b.id?1:-1)
-              return state;
-          })
-       })   
+
+    const filterPokemons = () => {
+        if (search.length > 1) {
+            const pokemons = pokeData.filter(pok => pok.name.includes(search))
+            setFilteredData(pokemons)
+        } else {
+            setFilteredData(pokeData);
+        }
     }
-    useEffect(()=>{
-        pokeFun();
-    },[url])
-    return(
+
+    useEffect(() => {
+        filterPokemons()
+
+    }, [search])
+
+
+    return (
         <>
+            <input className="search-input" type="text" placeholder="Search" value={search} onChange={handleSearch} />
             <div className="container">
                 <div className="left-content">
-                    <Card pokemon={pokeData} loading={loading} infoPokemon={poke=>setPokeDex(poke)}/>
-                    
+                    <Card pokemon={filteredData.length > 0 ? filteredData : pokeData} loading={loading} infoPokemon={poke => setPokeDex(poke)} />
+
                     <div className="btn-group">
-                        {  prevUrl && <button onClick={()=>{
+                        {prevUrl && <button onClick={() => {
                             setPokeData([])
-                           setUrl(prevUrl) 
+                            setFilteredData([])
+                            setSearch('')
+                            setUrl(prevUrl)
                         }}>Previous</button>}
 
-                        { nextUrl && <button onClick={()=>{
+                        {nextUrl && <button onClick={() => {
                             setPokeData([])
+                            setFilteredData([])
+                            setSearch('')
                             setUrl(nextUrl)
                         }}>Next</button>}
 
                     </div>
                 </div>
                 <div className="right-content">
-                   <Pokeinfo data={pokeDex}/>
+                    <Pokeinfo data={pokeDex} />
                 </div>
             </div>
         </>
