@@ -1,12 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect} from "react";
 import Card from "./Card";
 import Pokeinfo from "./Pokeinfo";
 import { useState } from "react";
-const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData }) => {
+
+const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData, }) => {
 
     const [filteredData, setFilteredData] = useState([]);
     const [search, setSearch] = useState('')
     const [pokeDex, setPokeDex] = useState();
+
+
 
     const handleSearch = (e) => {
         setSearch(e.target.value);
@@ -21,6 +24,42 @@ const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData }) => {
         }
     }
 
+    // const clickEsc = () => {
+    //     if (Pokeinfo == false ) {
+
+            
+
+
+    //         setPokeDex(false)
+    //     } else {
+    //         clickEsc(pokeDex)
+            
+    //     }
+    // }
+
+
+//   const ref = useRef();
+//   useEffect(() => {
+//     const checkIfClickOutside = (e) =>{
+//         if(pokeDex && ref.current && !ref.current.contains(e.target)){
+
+//             setPokeDex(false);
+//         }
+
+//     };
+//     document.addEventListener("click", checkIfClickOutside);
+  
+//     return () => {
+//         document.removeaddEventListener("click", checkIfClickOutside);
+
+//     };
+
+//   }, [pokeDex]);
+  
+  
+
+    
+
     useEffect(() => {
         filterPokemons()
 
@@ -32,7 +71,7 @@ const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData }) => {
             <input className="search-input" type="text" placeholder="Search" value={search} onChange={handleSearch} />
             <div className="container">
                 <div className="left-content">
-                    <Card pokemon={filteredData.length > 0 ? filteredData : pokeData} loading={loading} infoPokemon={poke => setPokeDex(poke)} />
+                    <Card pokemon={filteredData.length > 0 ? filteredData : pokeData} loading={loading} infoPokemon={poke => setPokeDex(poke)}  />
 
                     <div className="btn-group">
                         {prevUrl && <button onClick={() => {
@@ -50,16 +89,26 @@ const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData }) => {
                         }}>Next</button>}
 
                     </div>
-                    {/* --------------------------Knapp för att stänga popupen----------------- */}
-                    <div className="btn-esc">
-
-                    
-
-                    </div>
-
+                   
                 </div>
                 <div className="right-content">
                     <Pokeinfo data={pokeDex} />
+                    {/* hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh */}
+                   {    pokeDex && <button className="close" onClick={() => {
+
+                       
+                    
+                        setPokeDex(null)
+                        
+                        
+                        
+                        
+                        
+                    }}>xxx</button>
+
+                   } 
+                   {/* hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh */}
+                       
                 </div>
             </div>
         </>

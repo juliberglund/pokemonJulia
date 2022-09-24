@@ -4,6 +4,8 @@ import './Components/style.css'
 import axios from 'axios';
 function App() {
 
+  
+
   const [pokeData, setPokeData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/")
