@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import Pokeinfo from "./Pokeinfo";
 import RandomPokemon from "./RandomPokemon";
@@ -11,10 +11,10 @@ const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData }) => {
     const [pokeDex, setPokeDex] = useState();
     const [wildPokemon, setWildPokemon] = useState({});
 
-    
-    
 
- 
+
+
+
 
 
     const handleSearch = (e) => {
@@ -29,24 +29,18 @@ const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData }) => {
             setFilteredData(pokeData);
         }
     }
-  //
-    const pokeId = () => {
-       
-        return Math.floor(Math.random() * pokeData.length);
-      }
+    //
 
-    
-   
-    
-      const encounterWildPokemon = () => {
+
+    const encounterWildPokemon = () => {
         console.log(pokeData);
-          const RandomPokemon = pokeData[pokeId()];
-          console.log(RandomPokemon);
-          setWildPokemon(RandomPokemon);
-      }
+        const RandomPokemon = pokeData[Math.floor(Math.random() * pokeData.length)];
+        console.log(RandomPokemon);
+        setWildPokemon(RandomPokemon);
+    }
 
-//
-    
+    //
+
 
     useEffect(() => {
         filterPokemons()
@@ -55,22 +49,24 @@ const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData }) => {
     }, [search])
 
 
-      //   const btnRandomPoke = () { 
+    //   const btnRandomPoke = () { 
     //      Denna knapp ska ligga i hörnet & ska ta fram hela app-wrapper när man klickar på den.
     //   }
 
 
     return (
         <>
-                {/* Knapp klickas så fälls wildpoke in */}
-             <button className='random-poke'>RandomPokemon</button>  
+            {/* Knapp klickas så fälls wildpoke in */}
+            <button className='random-poke'>RandomPokemon</button>
+            <button className='random-poke' onClick={encounterWildPokemon}>Choose another random pokemon</button>
+
 
             <input className="search-input" type="text" placeholder="Search" value={search} onChange={handleSearch} />
 
-           { wildPokemon && <RandomPokemon wildPokemon={wildPokemon}/>} 
+            {wildPokemon && <RandomPokemon wildPokemon={wildPokemon} infoPokemon={poke => setPokeDex(poke)} />}
             <div className="container">
                 <div className="left-content">
-                    <Card pokemon={filteredData.length > 0 ? filteredData : pokeData} loading={loading} infoPokemon={poke => setPokeDex(poke)}  />
+                    <Card pokemon={filteredData.length > 0 ? filteredData : pokeData} loading={loading} infoPokemon={poke => setPokeDex(poke)} />
 
                     <div className="btn-group">
                         {prevUrl && <button onClick={() => {
@@ -88,25 +84,25 @@ const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData }) => {
                         }}>Next</button>}
 
                     </div>
-                   
+
                 </div>
                 <div className="right-content">
                     <Pokeinfo data={pokeDex} />
-                   {    pokeDex && <button className="close" onClick={() => {
-                    
-                        setPokeDex(null)
-                        
-                     }}>xxx</button>
+                    {pokeDex && <button className="close" onClick={() => {
 
-                   } 
+                        setPokeDex(null)
+
+                    }}>xxx</button>
+
+                    }
 
                 </div>
 
-                  
-               
-                       
-                
-                
+
+
+
+
+
             </div>
         </>
     )
