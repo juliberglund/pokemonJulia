@@ -3,7 +3,6 @@ import Main from './Components/Main';
 import './Components/style.css'
 import axios from 'axios';
 function App() {
-
   
 
   const [pokeData, setPokeData] = useState([]);
@@ -23,15 +22,22 @@ function App() {
   }
 
   const getPokemon = async (res) => {
-    res.map(async (item) => {
+    const array = []
+    res.forEach(element => {
       const result = await axios.get(item.url)
-      setPokeData(state => {
-        state = [...state, result.data]
-        state.sort((a, b) => a.id > b.id ? 1 : -1)
-        return state;
-      })
-    })
+      array.push(result.data)
+      console.log(result.data);
+    });
+
+    
+    // res.map(async (item) => {
+      
+    // }) 
+    setPokeData(array);
+    console.log(array);
+
   }
+  
 
   useEffect(() => {
     pokeFun();
@@ -40,9 +46,10 @@ function App() {
 
   return (
     <>
-      <Main loading={loading} pokeData={pokeData} nextUrl={nextUrl} prevUrl={prevUrl} setUrl={setUrl}
+      { pokeData.length > 0 && <Main loading={loading} pokeData={pokeData} nextUrl={nextUrl} prevUrl={prevUrl} setUrl={setUrl}
         setPokeData={setPokeData}
       />
+      }
     </>
   );
 }

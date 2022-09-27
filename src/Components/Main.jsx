@@ -1,14 +1,20 @@
-import React, { useEffect} from "react";
+import React, { useEffect, useState} from "react";
 import Card from "./Card";
 import Pokeinfo from "./Pokeinfo";
-import { useState } from "react";
+import RandomPokemon from "./RandomPokemon";
 
-const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData, }) => {
+
+const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData }) => {
 
     const [filteredData, setFilteredData] = useState([]);
     const [search, setSearch] = useState('')
     const [pokeDex, setPokeDex] = useState();
+    const [wildPokemon, setWildPokemon] = useState({});
 
+    
+    
+
+ 
 
 
     const handleSearch = (e) => {
@@ -23,52 +29,45 @@ const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData, }) => 
             setFilteredData(pokeData);
         }
     }
+  //
+    const pokeId = () => {
+       
+        return Math.floor(Math.random() * pokeData.length);
+      }
 
-    // const clickEsc = () => {
-    //     if (Pokeinfo == false ) {
+    
+   
+    
+      const encounterWildPokemon = () => {
+        console.log(pokeData);
+          const RandomPokemon = pokeData[pokeId()];
+          console.log(RandomPokemon);
+          setWildPokemon(RandomPokemon);
+      }
 
-            
-
-
-    //         setPokeDex(false)
-    //     } else {
-    //         clickEsc(pokeDex)
-            
-    //     }
-    // }
-
-
-//   const ref = useRef();
-//   useEffect(() => {
-//     const checkIfClickOutside = (e) =>{
-//         if(pokeDex && ref.current && !ref.current.contains(e.target)){
-
-//             setPokeDex(false);
-//         }
-
-//     };
-//     document.addEventListener("click", checkIfClickOutside);
-  
-//     return () => {
-//         document.removeaddEventListener("click", checkIfClickOutside);
-
-//     };
-
-//   }, [pokeDex]);
-  
-  
-
+//
     
 
     useEffect(() => {
         filterPokemons()
+        encounterWildPokemon()
 
     }, [search])
 
 
+      //   const btnRandomPoke = () { 
+    //      Denna knapp ska ligga i hörnet & ska ta fram hela app-wrapper när man klickar på den.
+    //   }
+
+
     return (
         <>
+                {/* Knapp klickas så fälls wildpoke in */}
+             <button className='random-poke'>RandomPokemon</button>  
+
             <input className="search-input" type="text" placeholder="Search" value={search} onChange={handleSearch} />
+
+           { wildPokemon && <RandomPokemon wildPokemon={wildPokemon}/>} 
             <div className="container">
                 <div className="left-content">
                     <Card pokemon={filteredData.length > 0 ? filteredData : pokeData} loading={loading} infoPokemon={poke => setPokeDex(poke)}  />
@@ -93,23 +92,21 @@ const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData, }) => 
                 </div>
                 <div className="right-content">
                     <Pokeinfo data={pokeDex} />
-                    {/* hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh */}
                    {    pokeDex && <button className="close" onClick={() => {
-
-                       
                     
                         setPokeDex(null)
                         
-                        
-                        
-                        
-                        
-                    }}>xxx</button>
+                     }}>xxx</button>
 
                    } 
-                   {/* hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh */}
-                       
+
                 </div>
+
+                  
+               
+                       
+                
+                
             </div>
         </>
     )

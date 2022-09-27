@@ -39,6 +39,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 0.5fr));
     grid-gap: 2rem;
+    margin-left: 180px;
 }
 
 .card {
@@ -113,6 +114,44 @@ body {
     margin-left: 110px;
     padding-top: 10px;
 
+}
+
+.wild-pokemon {
+    margin: 1px;
+    margin-bottom: 10px;
+    margin-right: -10px;
+    margin-left: 110px;
+
+
+
+}
+
+
+
+
+.pokemon{
+    margin: 1px;
+    margin-bottom: 10px;
+    margin-right: -10px;
+    margin-left: 110px;
+    padding-top: 100px;
+
+}
+
+.pokemon img {
+
+    width: 150px;
+
+}
+
+.wild-pokemon img {
+
+    width: 180px;
+}
+
+.random-poke{
+    margin-left: 30px;
+    
 }
 
 @media only screen and (max-width: 600px) {
@@ -238,6 +277,7 @@ body {
     }
     
     .btn-group button {
+
         outline:#b74555;
         border: none;
         width: 150px;
@@ -248,8 +288,54 @@ body {
         color: white;
         background-color: #b74555;
         border-radius: 8px;
-
         
     }
+
+    .app-wrapper{
+        background-color: rgb(106, 199, 199);
+        
+        width:fit-content;
+
+        margin-right: 480px;
+    }
+
+    .pokemon img {
+
+        width: 180px;
+
+
+        
+
+    }
+
+    .pokemon{
+        margin-left: 5px;
+
+    }
+
+    
+
+    .wild-pokemon{
+
+        margin-left: 5px;
+
+
+    }
+
+    .wild-pokemon img {
+        margin-left: 15px;
+        width: 180px;
+    }
+
+    .random-poke{
+        margin-top: 10px;
+        margin-right: 3000px;
+        background-color: rgb(213, 193, 225);
+    }
+
+    
+    
+    
+    
   }
   
