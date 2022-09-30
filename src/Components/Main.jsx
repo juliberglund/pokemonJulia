@@ -11,6 +11,8 @@ const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData }) => {
     const [pokeDex, setPokeDex] = useState();
     const [wildPokemon, setWildPokemon] = useState({});
     const [bookmarkedData, setBookmarkedData] = useState([]);
+    const [catchedPokemons, setCatchedPokemons] = useState([]);
+
 
 
     const handleSearch = (e) => {
@@ -34,40 +36,47 @@ const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData }) => {
         setWildPokemon(RandomPokemon);
     }
 
+   
+    const releasePokemon = id => {
+        setCatchedPokemons(state => state.filter(p => p.id !== id))
+      }
     
-    const onBookmarkClicked = () => {
-        setBookmarkedData(bookmarkedData => [...bookmarkedData, pokeDex]);
-        console.log("BookemarkedData", bookmarkedData);
+    
+   
 
-        //Allt sparat skickas in i bookmarksSave
+    const catchPokemon = (pokemon) => {
+        setCatchedPokemons(state => {
+          const pomonExists = (state.filter(p => pokemon.id == p.id).length > 0);
+    
+          if (!pomonExists) {
+            state = [...state, pokemon]
+            state.sort(function (a, b) {
+              return a.id - b.id
+            })
+          }
+          return state
+        })
+        console.log(catchedPokemons);
+        encounterWildPokemon()
+      }
+    
 
-    }
-
-   const bookmarksSave = () => {
-
-
-
-   }
 
 
 
 
     useEffect(() => {
+        
         filterPokemons()
         encounterWildPokemon()
 
     }, [search])
 
 
-    //   const btnRandomPoke = () { 
-    //      Denna knapp ska ligga i hörnet & ska ta fram hela app-wrapper när man klickar på den.
-    //   }
-
+   
 
     return (
         <>
-            {/* Knapp klickas så fälls wildpoke in */}
-            <button className='random-poke'>RandomPokemon</button>
 
 
             <input className="search-input" type="text" placeholder="Search" value={search} onChange={handleSearch} />
@@ -76,14 +85,36 @@ const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData }) => {
             {/* När man klickar här får man fram alla sparade */}
             {/* <button className="bookmarks" onClick={bookmarksSave}>Bookmarks</button>  */}
 
-            <button className="bookmarks" onClick={() => {
-                setBookmarkedData([]);
-            }}>Bookmarks</button> 
+           
 
 
 
             {wildPokemon && <RandomPokemon wildPokemon={wildPokemon} infoPokemon={poke => setPokeDex(poke)} />}
+
             <button className='random-pokemon' onClick={encounterWildPokemon}>Refresh</button>
+            { catchedPokemons.map((item) => {
+                        
+                return (
+                            //Klickar på kortet så öppnas infon 'right content'
+                         
+                            
+                            <div className="card" key={item.id} >
+                            <button onClick={() => releasePokemon(item.id)}>Release</button>
+                                <h2>{item.id}</h2>
+                                <img src={item.sprites.front_default} alt="" />
+                                <h2>{item.name}</h2>
+                            </div> 
+                            
+                           // <button className="catch-btn" onClick={() => catchPokemon(wildPokemon)}>CATCH</button>
+
+
+                        )
+
+
+                    
+                })}
+           
+
             <div className="container">
                 <div className="left-content">
                     <Card pokemon={filteredData.length > 0 ? filteredData : pokeData} loading={loading} infoPokemon={poke => setPokeDex(poke)} />
@@ -107,22 +138,19 @@ const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData }) => {
 
                 </div>
                 <div className="right-content">
-                    <Pokeinfo data={pokeDex} />
+                    <Pokeinfo catchPokemon = {catchPokemon} data={pokeDex} />
                     {pokeDex && <button className="close" onClick={() => {
 
                         setPokeDex(null)
 
                     }}>xxx</button>
+                    
 
                     }
-                    {pokeDex && <button className="bookmark-btn" onClick={onBookmarkClicked}>Bookmark</button>}
+                    
 
 
                 </div>
-
-                
-
-
 
 
 

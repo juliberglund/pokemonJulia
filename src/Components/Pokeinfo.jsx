@@ -1,7 +1,18 @@
 import React from "react";
+import Main from "./Main";
+import { useState } from "react";
+import RandomPokemon from "./RandomPokemon";
 
-const Pokeinfo = ({ data }) => {
-   
+
+const Pokeinfo = ({ data,  catchPokemon }) => {
+
+    
+
+
+
+
+
+
     return (
         <>
         {
@@ -22,7 +33,7 @@ const Pokeinfo = ({ data }) => {
                             })
                         }
                     </div>
-                    <div className="base-stat">
+                    <div className="base-stat"> 
                         {
                             data.stats.map(poke=>{
                                 return(
@@ -33,6 +44,13 @@ const Pokeinfo = ({ data }) => {
                             })
                         }
                     </div>
+                            
+                            <button className="catch-btn" onClick={()=> catchPokemon(data)}>CATCH</button>
+                            
+
+                            
+                       
+                                                
                 </>
             )
         }
