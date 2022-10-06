@@ -15,7 +15,7 @@ const RandomPokemon = ({ wildPokemon, infoPokemon,  }) => {
     <>
       <div className="app-wrapper">
         <section className="wild-pokemon">
-          <h2>Wild Encounter</h2>
+          <h2>Random Pokemons</h2>
           <div className='image-wrapper'>
           <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${wildPokemon.id}.svg`} className="sprite"
            onClick={() => infoPokemon(wildPokemon)} />

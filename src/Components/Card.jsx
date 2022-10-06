@@ -3,7 +3,6 @@ import { useState } from "react";
 const Card = ({ pokemon, loading, infoPokemon }) => {
 
 
-    // console.log(pokemon);
     
     return (
         <>
@@ -20,7 +19,6 @@ const Card = ({ pokemon, loading, infoPokemon }) => {
                                 <h2>{item.name}</h2>
                             </div> 
                             
-                           // <button className="catch-btn" onClick={() => catchPokemon(wildPokemon)}>CATCH</button>
 
 
                         )

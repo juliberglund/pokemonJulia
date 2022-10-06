@@ -4,173 +4,209 @@
     padding: 0;
     margin: 0;
     font-family: 'Roboto', sans-serif;
-}
+  }
 
-body {
-    background-color: #1570a5;
-}
+    body {
+        background-color: #1570a5;
+    }
 
-.search-input {
-    text-align: center;
-    border-radius: 8px;    
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-right: 200px;
-    margin-left: 180px;
-    padding-top: 10px;
-    width: 200px;
-    height: 25px;
+    .search-input {
+        text-align: center;
+        border-radius: 8px;    
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 200px;
+        margin-left: 180px;
+        padding-top: 10px;
+        width: 200px;
+        height: 25px;
 
-}
+    }
 
-.container {
-    width: 90%;
-    margin: auto;
-    padding-top: 100px;
-    display: flex;
-}
+    .container {
+        width: 90%;
+        margin: auto;
+        padding-top: 100px;
+        display: flex;
+    }
 
-.left-content,
-.right-content {
-    flex-basis: 50%;
-}
+    .left-content,
+    .right-content {
+        flex-basis: 50%;
+    }
 
-.right-content{
-    background-color: aliceblue;
-    max-width: 360px;
-}
+    .right-content{
+        background-color: aliceblue;
+        max-width: 360px;
+    }
 
-.left-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 0.5fr));
-    grid-gap: 2rem;
-    margin-left: 180px;
-}
+    .left-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 0.5fr));
+        grid-gap: 2rem;
+        margin-left: 180px;
+    }
 
-.card {
-    width: 300px;
-    background-color: #9EDEF9;
-    border-radius: 1rem;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
-    padding: 0 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-}
+    .card {
+        width: 300px;
+        background-color: #9EDEF9;
+        border-radius: 1rem;
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+        padding: 0 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-sizing: border-box;
+        cursor:grab;
 
-.right-content {
-    width: 50%;
-    text-align: center;
-    color: black;
-    position: fixed;
-    top: 100px;
-    right: 10px;
-}
+    }
 
-.right-content img {
-    margin: 1.5rem;
-    height: 160px;
-}
+    .right-content {
+        width: 50%;
+        text-align: center;
+        color: black;
+        position: fixed;
+        top: 100px;
+        right: 10px;
+    }
 
-.right-content h1 {
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
+    .right-content img {
+        margin: 1.5rem;
+        height: 160px;
+    }
 
-.abilities {
-    width: 70%;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1rem;
-}
+    .right-content h1 {
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
 
-.abilities .group {
-    background-color: #b74555;
-    color: white;
-    padding: 0.5rem;
-    font-size: 12px;
-    border-radius: 8px;
-    margin-left: 1rem;
-}
+    .abilities {
+        width: 70%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+    }
 
-.base-stat {
-    margin-top: 2rem;
-}
+    .abilities .group {
+        background-color: #b74555;
+        color: white;
+        padding: 0.5rem;
+        font-size: 12px;
+        border-radius: 8px;
+        margin-left: 1rem;
+    }
 
-
-
-.btn-group button {
-    outline: none;
-    border: none;
-    width: 170px;
-    padding: 0.3rem 0;
-    margin: 1rem;
-    font-size: 17px;
-    font-weight: bold;
-    color: white;
-    background-color: #b74555;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    margin-right: -10px;
-    margin-left: 110px;
-    padding-top: 10px;
-
-}
-
-.wild-pokemon {
-    margin: 1px;
-    margin-bottom: 10px;
-    margin-right: -10px;
-    margin-left: 110px;
-
-
-
-}
+    .base-stat {
+        margin-top: 2rem;
+    }
 
 
 
 
-.pokemon{
-    margin: 1px;
-    margin-bottom: 10px;
-    margin-right: -10px;
-    margin-left: 110px;
-    padding-top: 100px;
 
-}
+    .wild-pokemon {
+        margin: 1px;
+        margin-bottom: 10px;
+        margin-right: -10px;
+        margin-left: 110px;
 
-.pokemon img {
+    }
 
-    width: 150px;
 
-}
 
-.wild-pokemon img {
 
-    width: 180px;
-    
-}
+    .pokemon{
+        margin: 1px;
+        margin-bottom: 10px;
+        margin-right: -10px;
+        margin-left: 110px;
+        padding-top: 100px;
 
-.random-poke{
-    margin-left: 30px;
-    
-}
+    }
 
-.random-pokemon{
+    .pokemon img {
+
+        width: 150px;
+
+    }
+
+    .wild-pokemon img {
+
+        width: 180px;
+        cursor:grab;
+        
+    }
+
+    .random-poke{
+        margin-left: 30px;
+        
+    }
+
+    .random-pokemon{
     background-color: #b74555;
         border-radius: 8px;
         width: 100px;
         margin-left: 5rem;
-}
+    }
 
-.image-wrapper{
-    cursor: pointer;
+    /* -----------Button-------- */
 
-}
+    /* Close XXX */
+    .close{
+        background-color: #b74555;
+        margin-left: 100px;
+        width: 50px;
+        bottom: 100px;
+        border-radius: 8px;
+        cursor:grab;
+
+
+    }
+
+    /* Next & Previous */
+    .btn-group button {
+        outline: none;
+        border: none;
+        width: 170px;
+        padding: 0.3rem 0;
+        margin: 1rem;
+        font-size: 17px;
+        font-weight: bold;
+        color: white;
+        background-color: #b74555;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        margin-right: -10px;
+        margin-left: 110px;
+        padding-top: 10px;
+        cursor:grab;
+    
+    }
+   
+
+    /* Release */
+    .card button{
+        background-color:#b74555;
+        cursor:grab;
+    }    
+
+    /* Refresh */
+    .random-pokemon{
+        background-color:#b74555;
+        cursor:grab;
+    }
+
+    /* Catch */
+    .catch-btn{
+        background-color:#b74555;
+        cursor:grab;
+        border-radius: 8px;
+        width: 50px;
+    }
+
 
 
   @media only screen and (max-width: 600px) {
@@ -223,7 +259,8 @@ body {
     }
     
     .card {
-        width: 270px;
+        width: 280px;
+        height: 40px;
         background-color: #9EDEF9;
         border-radius: 1rem;
         box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
@@ -234,25 +271,11 @@ body {
         box-sizing: border-box;
     }
 
-    .close{
-        background-color: #b74555;
-        margin-left: 100px;
-        width: 50px;
-        bottom: 100px;
+    .card h2{
+        font-size: 18px;
+
     }
 
-    .bookmark-btn{
-        background-color: #b74555;
-        width: 80px;
-        margin-left: 8px;
-        margin-bottom: 100px;
-    }
-
-    .bookmarks{
-        background-color: rgb(138, 7, 31);
-        margin-top: -80px;
-        
-    }
 
     
     
@@ -262,18 +285,23 @@ body {
         text-align: center;
         color: black;
         position: fixed;
-        top: 100px;
+        top: 30px;
         left: 150px;
         margin-left: 75px;
         margin-right: 80px;
         margin-top: 10px;
         margin-bottom: 70px;
+        background-color: rgba(240, 248, 255, 0.337);
+        
+
+        
     }
     
     .right-content img {
         margin: 1.5rem;
         height: 70px;
         margin-left: 80px;
+        flex: 10;
     }
     
     .right-content h1 {
@@ -315,42 +343,25 @@ body {
         margin-top: 2rem;
     }
     
-    .btn-group {
-        display: flex;
-    }
+   
     
-    .btn-group button {
-
-        outline:#b74555;
-        border: none;
-        width: 150px;
-        padding: 0.3rem 0;
-        margin: 1rem;
-        font-size: 17px;
-        font-weight: bold;
-        color: white;
-        background-color: #b74555;
-        border-radius: 8px;
-        
-    }
+    
 
     .app-wrapper{
         background-color: rgb(207, 235, 235);
-        
         width:100px;
-
+        height: 180px;
         margin-right: 480px;
     }
+    
 
+    /*-------Wild Pokemon---------  */
     .wild-pokemon h2{
 
         font-size: 10px;
 
     }
   
-
-    
-
     .wild-pokemon{
 
         margin-left: 5px;
@@ -360,6 +371,7 @@ body {
     .wild-pokemon img {
         margin-left: -5px;
         width: 90px;
+        
     }
 
     .random-poke{
@@ -374,8 +386,58 @@ body {
 
     }
 
-    
-    
+    /* ------BUTTONS------- */
+
+    .close{
+        background-color: #b74555;
+        margin-left: 100px;
+        width: 50px;
+        bottom: 100px;
+        border-radius: 8px;
+        cursor:grab;
+    }
+
+    /* Next & Previus */
+    .btn-group button {
+        outline:#b74555;
+        border: none;
+        width: 150px;
+        padding: 0.3rem 0;
+        margin: 1rem;
+        font-size: 17px;
+        font-weight: bold;
+        color: white;
+        background-color: #b74555;
+        border-radius: 8px;
+        cursor:grab;
+    }
+    .btn-group {
+        display: flex;
+    }
+
+    /* Release */
+    .card button{
+        background-color:#b74555;
+        border-radius: 8px;
+        cursor:grab;
+        width: 120px;
+    }    
+
+    /* Refresh */
+    .random-pokemon{
+        background-color:#b74555;
+        margin-left: 12px;
+        margin-bottom: 10px;
+        cursor:grab;
+    }
+
+    /* Catch */
+    .catch-btn{
+        background-color:#b74555;
+        cursor:grab;
+        border-radius: 8px;
+        margin-left: 10px;
+    }
     
     
   }

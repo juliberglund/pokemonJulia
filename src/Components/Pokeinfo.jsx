@@ -45,7 +45,7 @@ const Pokeinfo = ({ data,  catchPokemon }) => {
                         }
                     </div>
                             
-                            <button className="catch-btn" onClick={()=> catchPokemon(data)}>CATCH</button>
+                            <button className="catch-btn" onClick={()=> catchPokemon(data)}>Catch</button>
                             
 
                             

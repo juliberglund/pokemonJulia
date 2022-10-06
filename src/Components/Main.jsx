@@ -81,10 +81,6 @@ const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData }) => {
 
             <input className="search-input" type="text" placeholder="Search" value={search} onChange={handleSearch} />
 
-
-            {/* När man klickar här får man fram alla sparade */}
-            {/* <button className="bookmarks" onClick={bookmarksSave}>Bookmarks</button>  */}
-
            
 
 
@@ -105,7 +101,6 @@ const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData }) => {
                                 <h2>{item.name}</h2>
                             </div> 
                             
-                           // <button className="catch-btn" onClick={() => catchPokemon(wildPokemon)}>CATCH</button>
 
 
                         )
@@ -143,7 +138,7 @@ const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData }) => {
 
                         setPokeDex(null)
 
-                    }}>xxx</button>
+                    }}>Close</button>
                     
 
                     }
