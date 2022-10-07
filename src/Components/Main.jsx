@@ -2,16 +2,55 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import Pokeinfo from "./Pokeinfo";
 import RandomPokemon from "./RandomPokemon";
+import axios from "axios";
 
 
-const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData }) => {
+const Main = ({ catchedPokemons, setCatchedPokemons }) => {
 
     const [filteredData, setFilteredData] = useState([]);
     const [search, setSearch] = useState('')
     const [pokeDex, setPokeDex] = useState();
     const [wildPokemon, setWildPokemon] = useState({});
-    const [bookmarkedData, setBookmarkedData] = useState([]);
-    const [catchedPokemons, setCatchedPokemons] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/")
+    const [nextUrl, setNextUrl] = useState();
+    const [prevUrl, setPrevUrl] = useState();
+    const [pokeData, setPokeData] = useState([]);
+
+
+
+
+    const pokeFun = async () => {
+        setLoading(true)
+        const res = await axios.get(url);
+        setNextUrl(res.data.next);
+        setPrevUrl(res.data.previous);
+        getPokemon(res.data.results)
+
+        setLoading(false)
+
+    }
+
+    const getPokemon = async (res) => {
+        const array = []
+        res.forEach(element => {
+    
+        });
+        for (let i = 0; i < res.length; i++) {
+          const result = await axios.get(res[i].url)
+          array.push(result.data)
+        }
+    
+    
+        setPokeData(array);
+        encounterWildPokemon(array);
+
+    
+      }
+    
+    
+
+
 
 
 
@@ -30,8 +69,8 @@ const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData }) => {
     
 
 
-    const encounterWildPokemon = () => {
-        const RandomPokemon = pokeData[Math.floor(Math.random() * pokeData.length)];
+    const encounterWildPokemon = (array) => {
+        const RandomPokemon = array[Math.floor(Math.random() * pokeData.length)];
 
         setWildPokemon(RandomPokemon);
     }
@@ -57,7 +96,7 @@ const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData }) => {
           return state
         })
         console.log(catchedPokemons);
-        encounterWildPokemon()
+        encounterWildPokemon(pokeData);
       }
     
 
@@ -68,9 +107,13 @@ const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData }) => {
     useEffect(() => {
         
         filterPokemons()
-        encounterWildPokemon()
 
     }, [search])
+
+    
+    useEffect(() => {
+        pokeFun();
+      }, [url])
 
 
    
@@ -87,7 +130,7 @@ const Main = ({ nextUrl, prevUrl, setUrl, pokeData, loading, setPokeData }) => {
 
             {wildPokemon && <RandomPokemon wildPokemon={wildPokemon} infoPokemon={poke => setPokeDex(poke)} />}
 
-            <button className='random-pokemon' onClick={encounterWildPokemon}>Refresh</button>
+            <button className='random-pokemon' onClick={()=>encounterWildPokemon(pokeData)}>Refresh</button>
             { catchedPokemons.map((item) => {
                         
                 return (
