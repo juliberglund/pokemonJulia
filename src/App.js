@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import Main from './Components/Main';
 import './Components/style.css'
-import axios from 'axios';
 function App() {
+
+  //Här har vi usestaten Catchedpokemons som vi skickar till main
 
   const [catchedPokemons, setCatchedPokemons] = useState([]);
 

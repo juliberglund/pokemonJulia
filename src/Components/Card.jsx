@@ -3,7 +3,8 @@ import { useState } from "react";
 const Card = ({ pokemon, loading, infoPokemon }) => {
 
 
-    
+    //Korten som används till pokemonsen, bild och klickfunktionen.
+
     return (
         <>
             {

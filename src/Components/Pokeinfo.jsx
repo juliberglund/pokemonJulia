@@ -1,7 +1,4 @@
 import React from "react";
-import Main from "./Main";
-import { useState } from "react";
-import RandomPokemon from "./RandomPokemon";
 
 
 const Pokeinfo = ({ data,  catchPokemon }) => {
@@ -9,7 +6,8 @@ const Pokeinfo = ({ data,  catchPokemon }) => {
     
 
 
-
+    //Här hämtar vi informationen om pokemonens "abilities", vi har knappen catch här som man kan trycka på efter att man har fått 
+    //upp informationen om pokemonsen.
 
 
 
@@ -45,7 +43,7 @@ const Pokeinfo = ({ data,  catchPokemon }) => {
                         }
                     </div>
                             
-                            <button className="catch-btn" onClick={()=> catchPokemon(data)}>Catch</button>
+                    <button className="catch-btn" onClick={()=> catchPokemon(data)}>Catch</button>
                             
 
                             

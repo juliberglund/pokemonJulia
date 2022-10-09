@@ -7,118 +7,117 @@ import axios from "axios";
 
 const Main = ({ catchedPokemons, setCatchedPokemons }) => {
 
-    const [filteredData, setFilteredData] = useState([]);
-    const [search, setSearch] = useState('')
-    const [pokeDex, setPokeDex] = useState();
-    const [wildPokemon, setWildPokemon] = useState({});
-    const [loading, setLoading] = useState(true);
-    const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/")
-    const [nextUrl, setNextUrl] = useState();
-    const [prevUrl, setPrevUrl] = useState();
-    const [pokeData, setPokeData] = useState([]);
+        const [filteredData, setFilteredData] = useState([]);
+        const [search, setSearch] = useState('')
+        const [pokeDex, setPokeDex] = useState();
+        const [wildPokemon, setWildPokemon] = useState({});
+        const [loading, setLoading] = useState(true);
+        const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/")
+        const [nextUrl, setNextUrl] = useState();
+        const [prevUrl, setPrevUrl] = useState();
+        const [pokeData, setPokeData] = useState([]);
 
 
 
 
-    const pokeFun = async () => {
-        setLoading(true)
-        const res = await axios.get(url);
-        setNextUrl(res.data.next);
-        setPrevUrl(res.data.previous);
-        getPokemon(res.data.results)
+        const pokeFun = async () => {
+            setLoading(true)
+            const res = await axios.get(url);
+            setNextUrl(res.data.next);
+            setPrevUrl(res.data.previous);
+            getPokemon(res.data.results)
 
-        setLoading(false)
+            setLoading(false)
 
-    }
-
-    const getPokemon = async (res) => {
-        const array = []
-        res.forEach(element => {
-    
-        });
-        for (let i = 0; i < res.length; i++) {
-          const result = await axios.get(res[i].url)
-          array.push(result.data)
         }
-    
-    
-        setPokeData(array);
-        encounterWildPokemon(array);
+
+        //Tar fram alla pokemons på sidan via en array
+        const getPokemon = async (res) => {
+            const array = []
+            res.forEach(element => {
+        
+            });
+            for (let i = 0; i < res.length; i++) {
+            const result = await axios.get(res[i].url)
+            array.push(result.data)
+            }
+        
+            setPokeData(array);
+            encounterWildPokemon(array);
+        }
+
 
     
-      }
-    
-    
 
+        const handleSearch = (e) => {
+            setSearch(e.target.value);
+        }
 
-
-
-
-    const handleSearch = (e) => {
-        setSearch(e.target.value);
-    }
-
-    const filterPokemons = () => {
+        //Sökfunktionen som sorterar pokemons namnen, tar fram den pokemon du sökt på.
+        const filterPokemons = () => {
         if (search.length > 1) {
             const pokemons = pokeData.filter(pok => pok.name.includes(search))
             setFilteredData(pokemons)
-        } else {
-            setFilteredData(pokeData);
+            } else {
+                setFilteredData(pokeData);
+            }
         }
-    }
     
 
+        //tar fram de randompokemonen som ligger till vänster på sidan
+        const encounterWildPokemon = (array) => {
+            const RandomPokemon = array[Math.floor(Math.random() * pokeData.length)];
 
-    const encounterWildPokemon = (array) => {
-        const RandomPokemon = array[Math.floor(Math.random() * pokeData.length)];
+            setWildPokemon(RandomPokemon);
+        }
 
-        setWildPokemon(RandomPokemon);
-    }
-
+        //funktionen till knappen som släpper pokemonsen efter du fångat de.
+        const releasePokemon = id => {
+            setCatchedPokemons(state => state.filter(p => p.id !== id))
+        }
+    
+    
    
-    const releasePokemon = id => {
-        setCatchedPokemons(state => state.filter(p => p.id !== id))
-      }
-    
-    
-   
-
-    const catchPokemon = (pokemon) => {
-        setCatchedPokemons(state => {
-          const pomonExists = (state.filter(p => pokemon.id == p.id).length > 0);
-    
-          if (!pomonExists) {
-            state = [...state, pokemon]
-            state.sort(function (a, b) {
-              return a.id - b.id
-            })
-          }
-          return state
-        })
-        console.log(catchedPokemons);
-        encounterWildPokemon(pokeData);
-      }
-    
-
-
-
-
-
-    useEffect(() => {
+        //funktionen till knappen Catch, som tar och sparar pokemonen till vänster på sidan
+        const catchPokemon = (pokemon) => {
+            setCatchedPokemons(state => {
+            const pomonExists = (state.filter(p => pokemon.id == p.id).length > 0);
         
-        filterPokemons()
-
-    }, [search])
-
+            if (!pomonExists) {
+                state = [...state, pokemon]
+                state.sort(function (a, b) {
+                return a.id - b.id
+                })
+            }
+            return state
+            })
+            //Samt tar fram en ny random pokemon
+            encounterWildPokemon(pokeData);
+        }
     
-    useEffect(() => {
-        pokeFun();
-      }, [url])
+
+
+
+
+        //Sökfuntionen att söka på pokemonsen  fungerar
+        useEffect(() => {
+            
+            filterPokemons()
+
+        }, [search])
+
+
+        //Så att de catchade pokemonsen sparas när du byter url
+        useEffect(() => {
+
+            pokeFun();
+
+        }, [url])
 
 
    
 
-    return (
+     return (
         <>
 
 
@@ -126,9 +125,9 @@ const Main = ({ catchedPokemons, setCatchedPokemons }) => {
 
            
 
-
-
+            {/* -----------Om wildpokemon finns kan du klicka på bilden och får fram information om den pokemonen  */}
             {wildPokemon && <RandomPokemon wildPokemon={wildPokemon} infoPokemon={poke => setPokeDex(poke)} />}
+
 
             <button className='random-pokemon' onClick={()=>encounterWildPokemon(pokeData)}>Refresh</button>
             { catchedPokemons.map((item) => {
@@ -147,10 +146,10 @@ const Main = ({ catchedPokemons, setCatchedPokemons }) => {
 
 
                         )
-
+                    })
 
                     
-                })}
+                }
            
 
             <div className="container">
@@ -181,7 +180,7 @@ const Main = ({ catchedPokemons, setCatchedPokemons }) => {
 
                         setPokeDex(null)
 
-                    }}>Close</button>
+                        }}>Close</button>
                     
 
                     }

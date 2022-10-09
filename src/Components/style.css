@@ -15,8 +15,7 @@
         border-radius: 8px;    
         margin-top: 10px;
         margin-bottom: 10px;
-        margin-right: 200px;
-        margin-left: 180px;
+        margin-left: 460px;
         padding-top: 10px;
         width: 200px;
         height: 25px;
@@ -30,46 +29,13 @@
         display: flex;
     }
 
-    .left-content,
-    .right-content {
-        flex-basis: 50%;
-    }
-
+   
     .right-content{
         background-color: aliceblue;
         max-width: 360px;
     }
 
-    .left-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 0.5fr));
-        grid-gap: 2rem;
-        margin-left: 180px;
-    }
-
-    .card {
-        width: 300px;
-        background-color: #9EDEF9;
-        border-radius: 1rem;
-        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
-        padding: 0 1.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        box-sizing: border-box;
-        cursor:grab;
-
-    }
-
-    .right-content {
-        width: 50%;
-        text-align: center;
-        color: black;
-        position: fixed;
-        top: 100px;
-        right: 10px;
-    }
-
+    
     .right-content img {
         margin: 1.5rem;
         height: 160px;
@@ -79,6 +45,44 @@
         text-transform: uppercase;
         font-weight: bold;
         letter-spacing: 1px;
+    }
+    
+    .right-content {
+        width: 50%;
+        text-align: center;
+        color: black;
+        position: fixed;
+        top: 100px;
+        right: 10px;
+        
+    }
+
+    .left-content,
+    .right-content {
+        flex-basis: 50%;
+    }
+
+
+    .left-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 0.5fr));
+        grid-gap: 2rem;
+        margin-left: 180px;
+    }
+
+   
+    .card {
+        width:min-content;
+        background-color: #9EDEF9;
+        border-radius: 1rem;
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+        padding: 0 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-sizing: border-box;
+        
+        
     }
 
     .abilities {
@@ -103,10 +107,6 @@
         margin-top: 2rem;
     }
 
-
-
-
-
     .wild-pokemon {
         margin: 1px;
         margin-bottom: 10px;
@@ -115,7 +115,12 @@
 
     }
 
+    .wild-pokemon img {
 
+        width: 180px;
+        cursor:grab;
+        
+    }
 
 
     .pokemon{
@@ -133,12 +138,6 @@
 
     }
 
-    .wild-pokemon img {
-
-        width: 180px;
-        cursor:grab;
-        
-    }
 
     .random-poke{
         margin-left: 30px;
@@ -150,6 +149,10 @@
         border-radius: 8px;
         width: 100px;
         margin-left: 5rem;
+    }
+
+    .app-wrapper h3{
+        margin-left: 60px;
     }
 
     /* -----------Button-------- */
@@ -197,6 +200,7 @@
     .random-pokemon{
         background-color:#b74555;
         cursor:grab;
+        margin-left: 150px;
     }
 
     /* Catch */
@@ -242,22 +246,7 @@
         padding-top: 100px;
         display: flex;
     }
-    
-    .left-content,
-    .right-content {
-        flex-basis: 70%;
-        grid-template-columns: 20%;
-        display:grid;
-
-    }
-    
-    .left-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 0.5fr));
-        grid-gap: 2rem;
-        margin-left: 5px;
-    }
-    
+     
     .card {
         width: 280px;
         height: 40px;
@@ -275,9 +264,22 @@
         font-size: 18px;
 
     }
-
-
     
+    
+    .left-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 0.5fr));
+        grid-gap: 2rem;
+        margin-left: 5px;
+    }
+
+    .left-content,
+    .right-content {
+        flex-basis: 70%;
+        grid-template-columns: 20%;
+        display:grid;
+
+    }
     
     .right-content {
         width: 50%;
@@ -292,8 +294,6 @@
         margin-top: 10px;
         margin-bottom: 70px;
         background-color: rgba(240, 248, 255, 0.337);
-        
-
         
     }
     
@@ -317,8 +317,6 @@
         font-size: 15px;
         margin-left: 80px;
     }
-
-    
     
     .abilities {
         width: 70%;
@@ -343,19 +341,19 @@
         margin-top: 2rem;
     }
     
-   
-    
-    
 
     .app-wrapper{
-        background-color: rgb(207, 235, 235);
-        width:100px;
+        background-color: #9EDEF9;
+        width:110px;
         height: 180px;
         margin-right: 480px;
     }
+
+    .app-wrapper h3{
+        margin-left: 1px;
+    }
     
 
-    /*-------Wild Pokemon---------  */
     .wild-pokemon h2{
 
         font-size: 10px;
@@ -388,14 +386,7 @@
 
     /* ------BUTTONS------- */
 
-    .close{
-        background-color: #b74555;
-        margin-left: 100px;
-        width: 50px;
-        bottom: 100px;
-        border-radius: 8px;
-        cursor:grab;
-    }
+    
 
     /* Next & Previus */
     .btn-group button {
@@ -425,9 +416,18 @@
 
     /* Refresh */
     .random-pokemon{
-        background-color:#b74555;
+        background-color:#9EDEF9;
         margin-left: 12px;
         margin-bottom: 10px;
+        cursor:grab;
+    }
+    /* Close */
+    .close{
+        background-color: #b74555;
+        margin-left: 78px;
+        width: 50px;
+        bottom: 100px;
+        border-radius: 8px;
         cursor:grab;
     }
 
@@ -436,7 +436,8 @@
         background-color:#b74555;
         cursor:grab;
         border-radius: 8px;
-        margin-left: 10px;
+        margin-left: 78px;
+        margin-top: 10px;
     }
     
     
