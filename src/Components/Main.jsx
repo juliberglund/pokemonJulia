@@ -4,7 +4,6 @@ import Pokeinfo from "./Pokeinfo";
 import RandomPokemon from "./RandomPokemon";
 import axios from "axios";
 
-
 const Main = ({ catchedPokemons, setCatchedPokemons }) => {
 
         const [filteredData, setFilteredData] = useState([]);
@@ -17,16 +16,12 @@ const Main = ({ catchedPokemons, setCatchedPokemons }) => {
         const [prevUrl, setPrevUrl] = useState();
         const [pokeData, setPokeData] = useState([]);
 
-
-
-
         const pokeFun = async () => {
             setLoading(true)
             const res = await axios.get(url);
             setNextUrl(res.data.next);
             setPrevUrl(res.data.previous);
             getPokemon(res.data.results)
-
             setLoading(false)
 
         }
@@ -45,9 +40,6 @@ const Main = ({ catchedPokemons, setCatchedPokemons }) => {
             setPokeData(array);
             encounterWildPokemon(array);
         }
-
-
-    
 
         const handleSearch = (e) => {
             setSearch(e.target.value);
@@ -75,13 +67,11 @@ const Main = ({ catchedPokemons, setCatchedPokemons }) => {
         const releasePokemon = id => {
             setCatchedPokemons(state => state.filter(p => p.id !== id))
         }
-    
-    
    
         //funktionen till knappen Catch, som tar och sparar pokemonen till vänster på sidan
         const catchPokemon = (pokemon) => {
             setCatchedPokemons(state => {
-            const pomonExists = (state.filter(p => pokemon.id == p.id).length > 0);
+            const pomonExists = (state.filter(p => pokemon.id === p.id).length > 0);
         
             if (!pomonExists) {
                 state = [...state, pokemon]
@@ -95,10 +85,6 @@ const Main = ({ catchedPokemons, setCatchedPokemons }) => {
             encounterWildPokemon(pokeData);
         }
     
-
-
-
-
         //Sökfuntionen att söka på pokemonsen  fungerar
         useEffect(() => {
             
@@ -114,16 +100,9 @@ const Main = ({ catchedPokemons, setCatchedPokemons }) => {
 
         }, [url])
 
-
-   
-
      return (
         <>
-
-
             <input className="search-input" type="text" placeholder="Search" value={search} onChange={handleSearch} />
-
-           
 
             {/* -----------Om wildpokemon finns kan du klicka på bilden och får fram information om den pokemonen  */}
             {wildPokemon && <RandomPokemon wildPokemon={wildPokemon} infoPokemon={poke => setPokeDex(poke)} />}
@@ -133,25 +112,16 @@ const Main = ({ catchedPokemons, setCatchedPokemons }) => {
             { catchedPokemons.map((item) => {
                         
                 return (
-                            //Klickar på kortet så öppnas infon 'right content'
-                         
-                            
+                            //Klickar på kortet så öppnas infon 'right content'   
                             <div className="card" key={item.id} >
-                            <button onClick={() => releasePokemon(item.id)}>Release</button>
+                            <button onClick={() => releasePokemon(item.id)}>X</button>
                                 <h2>{item.id}</h2>
                                 <img src={item.sprites.front_default} alt="" />
                                 <h2>{item.name}</h2>
                             </div> 
-                            
-
-
                         )
                     })
-
-                    
                 }
-           
-
             <div className="container">
                 <div className="left-content">
                     <Card pokemon={filteredData.length > 0 ? filteredData : pokeData} loading={loading} infoPokemon={poke => setPokeDex(poke)} />
@@ -177,21 +147,10 @@ const Main = ({ catchedPokemons, setCatchedPokemons }) => {
                 <div className="right-content">
                     <Pokeinfo catchPokemon = {catchPokemon} data={pokeDex} />
                     {pokeDex && <button className="close" onClick={() => {
-
                         setPokeDex(null)
-
-                        }}>Close</button>
-                    
-
-                    }
-                    
-
-
+                        }}>Close</button>                   
+                    } 
                 </div>
-
-
-
-
             </div>
         </>
     )

@@ -1,16 +1,8 @@
 import React from "react";
 
-
 const Pokeinfo = ({ data,  catchPokemon }) => {
-
-    
-
-
     //Här hämtar vi informationen om pokemonens "abilities", vi har knappen catch här som man kan trycka på efter att man har fått 
     //upp informationen om pokemonsen.
-
-
-
     return (
         <>
         {
@@ -41,18 +33,11 @@ const Pokeinfo = ({ data,  catchPokemon }) => {
                                 )
                             })
                         }
-                    </div>
-                            
-                    <button className="catch-btn" onClick={()=> catchPokemon(data)}>Catch</button>
-                            
-
-                            
-                       
-                                                
+                    </div>  
+                    <button className="catch-btn" onClick={()=> catchPokemon(data)}>Catch</button>                          
                 </>
             )
         }
-
         </>
     )
 }

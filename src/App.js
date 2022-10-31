@@ -6,17 +6,6 @@ function App() {
   //Här har vi usestaten Catchedpokemons som vi skickar till main
 
   const [catchedPokemons, setCatchedPokemons] = useState([]);
-
-
-
- 
-
-
- 
-
-  
-
-
   return (
     <>
       <Main catchedPokemons={catchedPokemons} setCatchedPokemons={setCatchedPokemons}/>
@@ -24,5 +13,4 @@ function App() {
     </>
   );
 }
-
 export default App;

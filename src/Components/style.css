@@ -19,7 +19,6 @@
         padding-top: 10px;
         width: 200px;
         height: 25px;
-
     }
 
     .container {
@@ -53,8 +52,7 @@
         color: black;
         position: fixed;
         top: 100px;
-        right: 10px;
-        
+        right: 10px;   
     }
 
     .left-content,
@@ -81,8 +79,6 @@
         align-items: center;
         justify-content: space-between;
         box-sizing: border-box;
-        
-        
     }
 
     .abilities {
@@ -116,10 +112,8 @@
     }
 
     .wild-pokemon img {
-
         width: 180px;
         cursor:grab;
-        
     }
 
 
@@ -129,15 +123,12 @@
         margin-right: -10px;
         margin-left: 110px;
         padding-top: 100px;
-
     }
 
     .pokemon img {
 
         width: 150px;
-
     }
-
 
     .random-poke{
         margin-left: 30px;
@@ -165,8 +156,6 @@
         bottom: 100px;
         border-radius: 8px;
         cursor:grab;
-
-
     }
 
     /* Next & Previous */
@@ -186,7 +175,6 @@
         margin-left: 110px;
         padding-top: 10px;
         cursor:grab;
-    
     }
    
 
@@ -194,6 +182,7 @@
     .card button{
         background-color:#b74555;
         cursor:grab;
+        width: 30px;
     }    
 
     /* Refresh */
@@ -211,6 +200,13 @@
         width: 50px;
     }
 
+    /* Info */
+    .card button{
+        background-color:#b74555;
+        border-radius: 8px;
+        cursor: grab;
+        margin-bottom: 50px;
+    }
 
 
   @media only screen and (max-width: 600px) {
@@ -406,12 +402,11 @@
         display: flex;
     }
 
-    /* Release */
+    /* X*/
     .card button{
-        background-color:#b74555;
         border-radius: 8px;
+        margin-right: 10px;
         cursor:grab;
-        width: 120px;
     }    
 
     /* Refresh */
@@ -439,7 +434,14 @@
         margin-left: 78px;
         margin-top: 10px;
     }
-    
-    
+
+      /* Info */
+      .card button{
+        background-color:#b74555;
+        border-radius: 8px;
+        width: 40px;
+        margin-top: 50px;
+        cursor: grab;
+    }
   }
     
