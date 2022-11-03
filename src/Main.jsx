@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
-import Card from "./Card";
-import Pokeinfo from "./Pokeinfo";
-import RandomPokemon from "./RandomPokemon";
+import Card from "./Components/Card";
+import Pokeinfo from "./Components/Pokeinfo";
+import RandomPokemon from "./Components/RandomPokemon";
+import {ScrollView} from 'react-native';
 import axios from "axios";
+
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+/>
 
 const Main = ({ catchedPokemons, setCatchedPokemons }) => {
 
@@ -95,24 +101,22 @@ const Main = ({ catchedPokemons, setCatchedPokemons }) => {
 
         //Så att de catchade pokemonsen sparas när du byter url
         useEffect(() => {
-
             pokeFun();
-
         }, [url])
 
-     return (
-        <>
+        return (
+            <>  
+            <div className="scroll">
             <input className="search-input" type="text" placeholder="Search" value={search} onChange={handleSearch} />
 
             {/* -----------Om wildpokemon finns kan du klicka på bilden och får fram information om den pokemonen  */}
             {wildPokemon && <RandomPokemon wildPokemon={wildPokemon} infoPokemon={poke => setPokeDex(poke)} />}
 
-
             <button className='random-pokemon' onClick={()=>encounterWildPokemon(pokeData)}>Refresh</button>
             { catchedPokemons.map((item) => {
                         
                 return (
-                            //Klickar på kortet så öppnas infon 'right content'   
+                            //Klickar på info så öppnas  'right content'   
                             <div className="card" key={item.id} >
                             <button onClick={() => releasePokemon(item.id)}>X</button>
                                 <h2>{item.id}</h2>
@@ -140,18 +144,17 @@ const Main = ({ catchedPokemons, setCatchedPokemons }) => {
                             setSearch('')
                             setUrl(nextUrl)
                         }}>Next</button>}
-
                     </div>
-
                 </div>
+                
                 <div className="right-content">
                     <Pokeinfo catchPokemon = {catchPokemon} data={pokeDex} />
-                    {pokeDex && <button className="close" onClick={() => {
-                        setPokeDex(null)
-                        }}>Close</button>                   
+                    {pokeDex && <button className="close" onClick={() => 
+                    {setPokeDex(null)}}>Close</button>
                     } 
                 </div>
-            </div>
+                </div>
+                </div>
         </>
     )
 }

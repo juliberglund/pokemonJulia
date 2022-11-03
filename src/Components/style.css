@@ -19,6 +19,7 @@
         padding-top: 10px;
         width: 200px;
         height: 25px;
+
     }
 
     .container {
@@ -52,7 +53,8 @@
         color: black;
         position: fixed;
         top: 100px;
-        right: 10px;   
+        right: 10px;
+        
     }
 
     .left-content,
@@ -126,13 +128,11 @@
     }
 
     .pokemon img {
-
         width: 150px;
     }
 
     .random-poke{
         margin-left: 30px;
-        
     }
 
     .random-pokemon{
@@ -219,6 +219,10 @@
     body {
         background-color:  #1570a5;
     }
+
+    .scroll {
+     overflow-x: scroll;
+    }
     
     .search-input {
         text-align: center;
@@ -229,8 +233,6 @@
         margin-left: 120px;
         padding-top: 10px;
         width: 100px;
-        
-        
     }
     
     .container {
@@ -258,7 +260,6 @@
 
     .card h2{
         font-size: 18px;
-
     }
     
     
@@ -274,7 +275,6 @@
         flex-basis: 70%;
         grid-template-columns: 20%;
         display:grid;
-
     }
     
     .right-content {
@@ -311,7 +311,7 @@
 
     .right-content h3{
         font-size: 15px;
-        margin-left: 80px;
+        margin-left: 70px;
     }
     
     .abilities {
@@ -330,6 +330,7 @@
         padding: 0.5rem;
         font-size: 8px;
         border-radius: 8px;
+        margin-left: 10px;
     
     }
     
@@ -382,8 +383,6 @@
 
     /* ------BUTTONS------- */
 
-    
-
     /* Next & Previus */
     .btn-group button {
         outline:#b74555;
@@ -419,24 +418,15 @@
     /* Close */
     .close{
         background-color: #b74555;
-        margin-left: 78px;
+        margin-left: 100px;
         width: 50px;
-        bottom: 100px;
         border-radius: 8px;
         cursor:grab;
     }
 
-    /* Catch */
-    .catch-btn{
-        background-color:#b74555;
-        cursor:grab;
-        border-radius: 8px;
-        margin-left: 78px;
-        margin-top: 10px;
-    }
 
       /* Info */
-      .card button{
+    .card button{
         background-color:#b74555;
         border-radius: 8px;
         width: 40px;
