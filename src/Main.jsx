@@ -10,14 +10,14 @@ import axios from "axios";
   href="https://fonts.googleapis.com/icon?family=Material+Icons"
 />
 
-const Main = ({ catchedPokemons, setCatchedPokemons }) => {
+const Main = ({ catchedPokemons, setCatchedPokemons}) => {
 
         const [filteredData, setFilteredData] = useState([]);
         const [search, setSearch] = useState('')
         const [pokeDex, setPokeDex] = useState();
         const [wildPokemon, setWildPokemon] = useState({});
         const [loading, setLoading] = useState(true);
-        const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/")
+        const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/");
         const [nextUrl, setNextUrl] = useState();
         const [prevUrl, setPrevUrl] = useState();
         const [pokeData, setPokeData] = useState([]);
@@ -29,7 +29,6 @@ const Main = ({ catchedPokemons, setCatchedPokemons }) => {
             setPrevUrl(res.data.previous);
             getPokemon(res.data.results)
             setLoading(false)
-
         }
 
         //Tar fram alla pokemons på sidan via en array
@@ -110,8 +109,8 @@ const Main = ({ catchedPokemons, setCatchedPokemons }) => {
             <input className="search-input" type="text" placeholder="Search" value={search} onChange={handleSearch} />
 
             {/* -----------Om wildpokemon finns kan du klicka på bilden och får fram information om den pokemonen  */}
-            {wildPokemon && <RandomPokemon wildPokemon={wildPokemon} infoPokemon={poke => setPokeDex(poke)} />}
-
+            {Object.values(wildPokemon). length > 0 && <RandomPokemon wildPokemon={wildPokemon} infoPokemon={poke => setPokeDex(poke)} />}
+            
             <button className='random-pokemon' onClick={()=>encounterWildPokemon(pokeData)}>Refresh</button>
             { catchedPokemons.map((item) => {
                         
