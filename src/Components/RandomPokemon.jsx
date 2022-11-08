@@ -3,7 +3,6 @@ const RandomPokemon = ({ wildPokemon, infoPokemon  }) => {
   //RandomPokemon, som det låter. här får vi upp de pokemonsen på vänster sida som du kan "refresha" och få upp en annan random match. 
   // Om du väljer att klicka på bilden på pokemonen som kommer upp så får du fram "infopokemon" till höger där du kan läsa
   // om den och välja att "catch" eller ej.
-
   return (
     <>
       <div className="app-wrapper">

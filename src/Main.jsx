@@ -2,14 +2,11 @@ import React, { useEffect, useState } from "react";
 import Card from "./Components/Card";
 import Pokeinfo from "./Components/Pokeinfo";
 import RandomPokemon from "./Components/RandomPokemon";
-import {ScrollView} from 'react-native';
 import axios from "axios";
-
 <link
   rel="stylesheet"
   href="https://fonts.googleapis.com/icon?family=Material+Icons"
 />
-
 const Main = ({ catchedPokemons, setCatchedPokemons}) => {
 
         const [filteredData, setFilteredData] = useState([]);
@@ -60,7 +57,6 @@ const Main = ({ catchedPokemons, setCatchedPokemons}) => {
             }
         }
     
-
         //tar fram de randompokemonen som ligger till vänster på sidan
         const encounterWildPokemon = (array) => {
             const RandomPokemon = array[Math.floor(Math.random() * pokeData.length)];
