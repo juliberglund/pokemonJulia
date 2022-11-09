@@ -7,7 +7,7 @@ const Pokeinfo = ({ data,  catchPokemon }) => {
         <>
         {
             (!data) ? "" : (
-                <>
+                <div className="pokeminfo" style={{height: 'auto', width: 'auto', alignItems: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column', padding: 20}}>
                     <h1>{data.name}</h1>
                     <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${data.id}.svg`} alt="" />
                     <div className="abilities">
@@ -35,7 +35,7 @@ const Pokeinfo = ({ data,  catchPokemon }) => {
                         }
                     </div>  
                     <button className="catch-btn" onClick={()=> catchPokemon(data)}>Catch</button>                          
-                </>
+                </div>
             )
         }
         </>

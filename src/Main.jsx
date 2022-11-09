@@ -3,6 +3,8 @@ import Card from "./Components/Card";
 import Pokeinfo from "./Components/Pokeinfo";
 import RandomPokemon from "./Components/RandomPokemon";
 import axios from "axios";
+
+import { AiFillCloseSquare } from "react-icons/ai";
 <link
   rel="stylesheet"
   href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -18,6 +20,7 @@ const Main = ({ catchedPokemons, setCatchedPokemons}) => {
         const [nextUrl, setNextUrl] = useState();
         const [prevUrl, setPrevUrl] = useState();
         const [pokeData, setPokeData] = useState([]);
+
 
         const pokeFun = async () => {
             setLoading(true)
@@ -42,6 +45,8 @@ const Main = ({ catchedPokemons, setCatchedPokemons}) => {
             setPokeData(array);
             encounterWildPokemon(array);
         }
+
+        
 
         const handleSearch = (e) => {
             setSearch(e.target.value);
@@ -99,13 +104,43 @@ const Main = ({ catchedPokemons, setCatchedPokemons}) => {
             pokeFun();
         }, [url])
 
+
+
+      
+    const heya = () => {
+        // alert('called')
+        console.log(pokeDex)
+       if (pokeDex !== undefined && pokeDex != null) {
+        console.log('pig')
+        
+        document.getElementById('blah').focus();
+
+        document.getElementById('blah').style.display = 'inline-block';
+        document.getElementById('inblah').style.display = 'block'
+        document.getElementById('b').style.display = 'block';
+        document.getElementById('full').style.pointerEvents = 'none';
+        document.getElementById('inblah').style.borderWidth = '1px solid black'        
+        
+        
+       } else if(pokeDex === null){
+        console.log('hrllo')
+        document.getElementById('inblah').style.display = 'none';
+        document.getElementById('blah').style.display = 'none';
+        document.getElementById('b').style.display = 'none';
+        document.getElementById('full').style.pointerEvents = 'auto';
+       }
+    } 
+
         return (
+
+            
             <>  
-            <div className="scroll">
+            {heya()}
+            <div className="scroll" style={{position: 'relative', pointerEvents: 'auto'}} id="full">
             <input className="search-input" type="text" placeholder="Search" value={search} onChange={handleSearch} />
 
             {/* -----------Om wildpokemon finns kan du klicka på bilden och får fram information om den pokemonen  */}
-            {Object.values(wildPokemon). length > 0 && <RandomPokemon wildPokemon={wildPokemon} infoPokemon={poke => setPokeDex(poke)} />}
+            {Object.values(wildPokemon).length > 0 && <RandomPokemon wildPokemon={wildPokemon} infoPokemon={poke => setPokeDex(poke)} />}
             
             <button className='random-pokemon' onClick={()=>encounterWildPokemon(pokeData)}>Refresh</button>
             { catchedPokemons.map((item) => {
@@ -142,12 +177,19 @@ const Main = ({ catchedPokemons, setCatchedPokemons}) => {
                     </div>
                 </div>
                 
-                <div className="right-content">
-                    <Pokeinfo catchPokemon = {catchPokemon} data={pokeDex} />
-                    {pokeDex && <button className="close" onClick={() => 
-                    {setPokeDex(null)}}>Close</button>
-                    } 
+                <div style={{position: 'absolute',bottom: '50%',marginRight: 'auto',marginLeft: 'auto',width: 'auto', height: 'auto', backgroundColor: 'transparent',position:'fixed', padding: 20, top: '10%', left: '50%',transform: 'translate(-50%, 0)', pointerEvents: 'none'}} id="blah">
+                    <div style={{width: 'auto', height: 'auto',backgroundColor:'white', pointerEvents: 'all', padding: 10, borderWidth: '2px', display: 'none'}} id="inblah">
+                        <div style={{width: 'auto', height: 'auto', backgroundColor: 'red'}} id='b'>
+                    {pokeDex && <AiFillCloseSquare onClick={() => 
+                        {setPokeDex(null)}} size={30} style={{float: 'left'}} />
+                        }</div>
+                     
+                        <Pokeinfo catchPokemon = {catchPokemon} data={pokeDex} />
+                    
+                    </div>
+                
                 </div>
+                
                 </div>
                 </div>
         </>
